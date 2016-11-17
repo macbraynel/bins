@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+    id          = "com.phonegap.example"
+    versionCode = "10"
+    version     = "1.0.1" 
+    xmlns:gap="http://phonegap.com/ns/1.0">
+
+    <name>Binz</name>
+
+    <description>
+      Displays bin and recycling information
+    </description>
+
+    <author href="http://www.argyll-bute.gov.uk" email="enquiries@argyll-bute.gov.uk">
+      Lorne MacBrayne
+    </author>
+    
+
+</widget>
