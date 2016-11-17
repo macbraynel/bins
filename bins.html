@@ -1,0 +1,209 @@
+<html>
+
+<head>
+
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="recycle.css">
+
+<!-- Include the jQuery library -->
+	<script src="js/jquery.js"></script>
+
+<!-- Include the jQuery Mobile library -->
+<script src="jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+<div data-role="page" id="homepage">
+
+  <div data-role="header">
+    <h1>Argyll and Bute Council<br/>
+	Bins and bin stuff</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+     
+  <form name="input">
+<label for="sterm">Postcode:</label>
+<input type="text" name="sterm" id="sterm" placeholder="Enter your postcode...">
+<input type="button" value="Search" data-corners="true" onclick="postcodeSearch()">
+</form>
+
+<div id="output">
+	<table style="border: solid 2px #000;" id="resultsTable" data-role="table" class="ui-responsive">
+		<tbody>
+			<tr></tr>
+		</tbody>
+	</table>
+</div>
+
+<script src="data/bindata.js"></script>
+
+<script>
+
+// Search function using the jQuery inArray function to match data position in array
+function searchData(data, search){
+
+    // Create a temp array to store the found data
+    var tempArray = [];
+    
+    // Loop through the bindata array to see if the postcode is found
+    for(i=0; i<data.length; i++){
+        var pos = $.inArray(search, data[i]);
+        
+        // is it is found,  bung it into the temporary array
+        if(pos !== -1){
+            tempArray.push(data[i]);
+        }
+    }
+    
+    // Return the array of matched data
+    return tempArray;
+	
+}
+
+
+function postcodeSearch(){
+$('#resultsTable > tbody').empty();
+$('#resultsTable > tbody').append("<th>Address</th><th>Green Bin</th><th>Blue Bin</th><th>Glass Bin</th><th>Food Bin</th><th>time</th>");
+var searchTerm = document.getElementById('sterm').value;
+var output = searchData(data, searchTerm);
+for(i=0; i<output.length; i++){
+    $('#ResultsTable > tbody:last-child').append("<tr><td>" + output[i][11] + "</td><td>" + output[i][3] + "</td><td>" + output[i][5] + "</td><td>" + output[i][7] + "</td><td>" + output[i][9] + "</td><td>" + output[i][13] + "</td></tr>");
+}
+output = [];
+}
+
+
+function doSearch(){
+				document.getElementById("output").innerHTML = data[4][10];
+				document.write("<table style='border: solid 2px #000'><th>postcode</th><th>address</th><tr><td>"+data[4][10]+"</td><td>"+data[4][11]+"</td></tr></table>");
+				}
+</script>
+
+<!-- search ends -->
+	<a href="#pageone" data-transition="flow" class="ui-btn ui-btn-inline ui-corner-all ui-icon-info ui-btn-icon-left">What's in the bin?</a>
+	 <a href="#pagetwo" data-transition="flow" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-left">Popup</a>
+  </div>
+
+  <div data-role="footer">
+    <h1>Phone:  01546 605522</h1>
+  </div>
+
+</div>
+<div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>Argyll and Bute Council<br/>
+	Bins and bin stuff</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+ 
+ <div class="holidayboxgreen">
+<div class="row">
+<div class="col-md-4">
+<p>&nbsp;</p>
+<p><strong><img src="http://www.argyll-bute.gov.uk/sites/default/files/ab_wheelie_bin_green_small_0.png" alt="Green bin" width="65" height="92" style="float: left; margin-left: 5px; margin-right: 5px;" /></strong><span style="color: #008000;"><a name="greenbin"></a><strong>Your green bin is for general rubbish</strong></span></p>
+<p><span style="color: #008000;"><strong>Your green bin is emptied every 3 weeks</strong></span></p>
+<p><strong>Please use your green bin for all the general rubbish that we can't recycle</strong></p>
+</div>
+<div class="col-md-4">
+<h2><span style="color: #008000;"><img src="http://www.argyll-bute.gov.uk/sites/default/files/tick_1_0.png" alt="Yes" title="Yes" width="35" height="26" style="float: left; margin-left: 5px; margin-right: 5px;" /><strong>Include:</strong></span></h2>
+<ul>
+<li>nappies</li>
+<li>cling film, bubble wrap, or food contaminated plastics</li>
+<li>non-recyclable plastics</li>
+<li>polystyrene packing</li>
+<li>items that can't be recycled</li>
+</ul>
+</div>
+<div class="col-md-4">
+<h2><img src="http://www.argyll-bute.gov.uk/sites/default/files/cross_2_0.png" alt="No" title="No" width="30" height="30" style="float: left; margin-left: 5px; margin-right: 5px;" /> <span style="color: #ff0000;">Please don't include:</span></h2>
+<ul>
+<li>items that can be recycled</li>
+<li>batteries and electrical equipment</li>
+<li>rubble, soil, stone or bricks</li>
+<li>bulky items</li>
+</ul>
+</div>
+</div>
+<div class="holidayboxred">
+<ul>
+<li>Only 1 green bin per household will be emptied (apart from some <a href="https://www.argyll-bute.gov.uk/bins/faqs">exceptions - <strong>find out more in our FAQs</strong></a>)</li>
+<li>Please ensure your bin is clearly labelled with your house number or name</li>
+</ul>
+</div>
+</div>
+<div class="holidayboxblue">
+<div class="row">
+<div class="col-md-4">
+<p>&nbsp;</p>
+<p><strong><img src="http://www.argyll-bute.gov.uk/sites/default/files/ab_wheelie_bin_blue_dark_small.png" alt="Green bin" width="75" height="106" style="float: left; margin-left: 5px; margin-right: 5px;" /></strong><span style="color: #008000;"><a name="bluebin"></a><strong><span style="color: #000080;">Your blue bin is for paper, card, cans and plastic</span></strong><br /></span></p>
+<p><span style="color: #008000;"><strong><span style="color: #000080;">Your blue bin is emptied every 2 weeks<br /></span></strong></span></p>
+<ul>
+<li>Please do not put items into plastic bags, just straight into the bin</li>
+</ul>
+<ul>
+<li>Please rinse cans, cartons and plastics before putting them in the bin</li>
+<li>Please leave the lids off bottles so they can be squashed, or squash them and put the lids back on</li>
+</ul>
+</div>
+<div class="col-md-4">
+<h2><span style="color: #008000;"><img src="http://www.argyll-bute.gov.uk/sites/default/files/tick_1_0.png" alt="Yes" title="Yes" width="35" height="26" style="float: left; margin-left: 5px; margin-right: 5px;" /><strong>Include:</strong></span></h2>
+<ul>
+<li>food, drink and aerosol cans</li>
+<li>clean plastic drinks, detergent or cosmetic bottles, plastic pots, tubs and trays</li>
+<li>paper, newspaper, brochures, magazines, envelopes, phone books</li>
+<li>food packaging cardboard / packaging sleeves</li>
+<li>cereal boxes</li>
+<li>egg boxes</li>
+<li>cardboard boxes / packaging</li>
+<li>drinks cartons / tetrapaks</li>
+</ul>
+</div>
+<div class="col-md-4">
+<h2><img src="http://www.argyll-bute.gov.uk/sites/default/files/cross_2_0.png" alt="No" title="No" width="30" height="30" style="float: left; margin-left: 5px; margin-right: 5px;" /> <span style="color: #ff0000;">Please don't include:</span></h2>
+<ul>
+<li>oil or paint tins</li>
+<li>plastic bags or liners</li>
+<li>other types of plastic packaging</li>
+<li>tissues</li>
+<li>metallic wrapping paper</li>
+<li>paper and card contaminated with food</li>
+<li>painted paper or card</li>
+</ul>
+</div>
+</div>
+</div>
+ 
+  
+    <a href="#pagetwo" data-transition="flow" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-left">Go to Page Two</a>
+	<a href="#homepage" data-transition="flow" data-direction="reverse" class="ui-btn ui-btn-inline ui-corner-all ui-icon-home ui-btn-icon-left">Go to Homepage</a>
+  </div>
+  
+    <div data-role="footer">
+    <h1>Phone:  01546 605522</h1>
+  </div>
+</div>
+
+<div data-role="page" data-dialog="true" id="pagetwo">
+  <div data-role="header">
+    <h1>Argyll and Bute Council<br/>
+	Bins and bin stuff</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <a href="#pageone" data-transition="flow" data-direction="reverse" class="ui-btn ui-btn-inline ui-corner-all ui-icon-info ui-btn-icon-left">What's in the bin?</a>
+	<a href="#homepage" data-transition="flow" data-direction="reverse" class="ui-btn ui-btn-inline ui-corner-all ui-icon-home ui-btn-icon-left">Search</a>
+  </div>
+  
+    <div data-role="footer">
+    <h1>Phone:  01546 605522</h1>
+  </div>
+</div>
+</body>
+
+</html>
