@@ -206,7 +206,7 @@
         </div>
 		
 		<a href="#" id="submitButton">click me</a>
-
+		<div id="results"></div>
 
         <script>
             $("#submitButton").on("click", function(event) {
@@ -216,14 +216,18 @@
 
                 $.ajax({
                         url: urlLookup,
+						type: 'GET',
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader("Authorization", "Basic cml0Y2hpZWQ6I09yYWNsZVRzdA==");
                         },
                         crossDomain: true,
-                        //data: data,
-                        //success: success,
+                        //data: {id: "1864"},
+                        success: function(result){$("#results").html(result);},
+						error: function(result){$("#results").html(result);}
+        
                         //dataType: "json"
                     })
+
                     .done(function(data) {
                         alert(data);
 
